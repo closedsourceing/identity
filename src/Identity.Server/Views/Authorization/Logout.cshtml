@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Sign Out";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Sign Out</h1>
+<p>Are you sure you want to sign out?</p>
+
+<form method="post" action="~/connect/logout">
+    @Html.AntiForgeryToken()
+    <div class="actions">
+        <button type="submit" class="btn btn-primary">Sign Out</button>
+        <a href="/" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>

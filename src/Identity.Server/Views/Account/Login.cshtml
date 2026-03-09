@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Sign In";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Sign In</h1>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <p>@error.ErrorMessage</p>
+        }
+    </div>
+}
+
+<form method="post" action="~/account/login">
+    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+    @Html.AntiForgeryToken()
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="Username" value="@Model.Username" autocomplete="username" required />
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="Password" autocomplete="current-password" required />
+
+    <label>
+        <input type="checkbox" name="RememberMe" value="true" @(Model.RememberMe ? "checked" : "") />
+        Remember me
+    </label>
+
+    <div class="actions">
+        <button type="submit" class="btn btn-primary">Sign In</button>
+    </div>
+</form>

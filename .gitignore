@@ -1,0 +1,31 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+*.DS_Store
+
+## Build output
+out/
+publish/
+
+## EF Core
+*.db
+*.db-shm
+*.db-wal
+
+## Rider
+.idea/
+
+## Test results
+TestResults/
+*.trx
+*.xml
+coverage.json
+coverage.opencover.xml
+
+## Secrets (never commit)
+**/secrets.json
+**/appsettings.Secret.json
