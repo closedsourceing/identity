@@ -1,0 +1,25 @@
+@model Identity.Server.Models.ConsentViewModel
+@{
+    ViewData["Title"] = "Authorize Application";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Authorize @Model.ApplicationName</h1>
+
+<p>The application <strong>@Model.ApplicationName</strong> is requesting the following permissions:</p>
+
+<ul class="scope-list">
+    @foreach (var scope in Model.Scopes)
+    {
+        <li>&#10003; @scope</li>
+    }
+</ul>
+
+<form method="post" action="~/connect/authorize">
+    @Html.AntiForgeryToken()
+
+    <div class="actions">
+        <button type="submit" name="submit.Accept" value="accept" class="btn btn-primary">Allow</button>
+        <button type="submit" name="submit.Deny" value="deny" class="btn btn-danger">Deny</button>
+    </div>
+</form>
